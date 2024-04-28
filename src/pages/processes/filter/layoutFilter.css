@@ -1,0 +1,3 @@
+.fullMinusNavbar {
+    height: calc(100vh - 48px); /* Replace 60px with the height of your navbar */
+  }
