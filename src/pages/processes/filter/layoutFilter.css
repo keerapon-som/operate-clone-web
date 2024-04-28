@@ -1,3 +1,11 @@
 .fullMinusNavbar {
     height: calc(100vh - 48px); /* Replace 60px with the height of your navbar */
   }
+
+.fullMinusNavbarAndwhatbar {
+  height: calc(100vh - 98px); /* Replace 60px with the height of your navbar */
+}
+
+.wMinusFilter {
+    width: calc(100vw - 337px); /* Replace 300px with the width of your filter */
+  }

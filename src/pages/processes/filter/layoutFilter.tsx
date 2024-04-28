@@ -5,8 +5,8 @@ function LayoutFilter(props:any) {
 
     return (
       <>
-  <div id="separator-sidebar" className="left-0 z-40 w-80 fullMinusNavbar transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-     <div className="h-full px-3 py-2 overflow-y-auto bg-gray-50 dark:bg-neutral-800 border border-neutral-600">
+  <div id="separator-sidebar" className="left-0 z-40 w-80 min-w-80 fullMinusNavbar transition-transform " aria-label="Sidebar">
+     <div className="h-full px-3 py-2 overflow-y-auto bg-gray-50 dark:bg-neutral-800 border-t border-r border-neutral-700">
         <ul className="space-y-2 font-medium text-sm dark:text-white">
         <li className="flex justify-between items-center">
             <a className="flex items-center rounded-lg group">

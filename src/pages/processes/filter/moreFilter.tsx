@@ -19,7 +19,15 @@ function MoreFilter() {
          </li>
           </div>
           <div>
-          <Input placeholder="Search by Process Name" />
+            <div className='mb-2'>
+            <label className="font-normal text-neutral-300">Process Instance Key(s)</label>
+            </div>
+          <Input className="mb-4" />
+          <div className='mb-2'>
+            <label className="font-normal text-neutral-300">Process Instance Key(s)</label>
+            </div>
+          <Input className="mb-4" placeholder="Search by Process Name" />
+          
        </div>
        </div>
     )

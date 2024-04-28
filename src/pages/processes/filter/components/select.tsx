@@ -15,7 +15,7 @@ const Select: React.FC<any> = (props:any) => {
         id="underline_select" 
         value={selectedOption}
         onChange={handleSelectChange}
-        className="block py-1 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+        className="block py-1 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-500 appearance-none dark:text-gray-300 dark:border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-400 peer"
       >
         <option value="" className={classNameoptions}>Search by Process Name</option>
         {options.map((option:any) => (
