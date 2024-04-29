@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Navbar from './layout/navbar'
-import CanvasBar from './pages/processes/canvanBar/canvasBar'
+import CanvasBar from './pages/processes/canvas/canvasBar'
 import AppRoutes from './routes'
 
 function App() {
