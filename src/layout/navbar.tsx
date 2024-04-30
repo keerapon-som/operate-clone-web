@@ -9,7 +9,7 @@ const menuItems = [
 const allmenu: JSX.Element[] = menuItems.map((menu) => {
   return (
     <div >
-      <a href={menu.path} className="block py-2 md:hover:bg-neutral-700 md:p-2 md:px-5 text-neutral-300 md:hover:text-neutral-100 md:hover:bg-transparent">
+      <a href={menu.path} className="block py-2 hover:bg-neutral-700 p-2 px-5 text-neutral-300 hover:text-neutral-100 hover:bg-transparent">
         {menu.label}
       </a>
     </div>
@@ -24,12 +24,12 @@ function Navbar() {
   return (
     <>
     <nav className=" border-gray-200 bg-neutral-900">
-  <div className="max-w-screen-xl flex flex-wrap items-center justify-between p-1">
-  <div className="" id="navbar-user">
+  <div className="items-center justify-between py-1">
+  <div className="">
     <ul className="flex font-normal ">
 
     <div >
-      <a className="block py-2 md:p-2 mr-5 text-neutral-300 md:hover:bg-transparent">
+      <a className="block py-2 p-2 mr-5 text-neutral-300 hover:bg-transparent">
         OPERATE-CLONE
       </a>
     </div>

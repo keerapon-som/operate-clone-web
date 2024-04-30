@@ -8,7 +8,7 @@ function LayoutFilter(props:any) {
 
     return (
       <>
-  <div id="separator-sidebar" className="left-0 z-40 w-80 min-w-80 fullMinusNavbar transition-transform " aria-label="Sidebar">
+  <div id="separator-sidebar" className="left-0 z-40 min-w-80 fullMinusNavbar transition-transform " aria-label="Sidebar">
      <div className="h-full py-2 overflow-y-auto bg-neutral-800 border-t border-r border-neutral-700">
         <ul className="space-y-3 font-medium text-sm text-white">
         <li className="flex justify-between items-center">
