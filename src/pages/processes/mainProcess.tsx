@@ -8,8 +8,9 @@ import Operations from './operation/mainOperation';
 
 const Processes = () => {
   const [FilterOpened, setFilterOpened] = useState(true)
-  const [height, setHeight] = useState(200);
+  const [height, setHeight] = useState(300);
   const [isResizing, setIsResizing] = useState(false);
+  const [statset, setStatset] = useState(0);
 
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -22,11 +23,12 @@ const Processes = () => {
         width: window.innerWidth,
         height: window.innerHeight,
       });
-
-      const setupNewHeight = height * (window.innerHeight/953);
-      setHeight(setupNewHeight);
+      const X = (window.innerHeight/953)
+      const Y = 655-(657*X)
+      setStatset(Y)
+      // setHeight(setNewhigh);
     };
-
+    console.log(windowSize.height);
     window.addEventListener('resize', handleResize);
 
     // Cleanup event listener on component unmount
@@ -40,9 +42,8 @@ const Processes = () => {
         if (isResizing) {
             const newHeight = event.clientY - document.getElementById('resizable-box').getBoundingClientRect().top;
             if (newHeight >= 300 && newHeight <= 700) {
-                setHeight(newHeight);
+                setHeight(newHeight+statset);
             }
-            console.log(newHeight)
         }
     };
 
@@ -72,22 +73,22 @@ const Processes = () => {
   return (
     <div className='flex'>
       <Filter FilterOpened={FilterOpened} setFilterOpened={setFilterOpened} />
-      <div className="flex-grow " id="resizable-box"style={{ height: `${height}px`, position: 'relative' }}>
+      <div className="flex-grow " id="resizable-box"style={{ height: `${height-statset}px`, position: 'relative' }}>
       <div
                 style={{
-                    height: '10px',
-                    background: 'gray',
+                    height: '20px',
+                    // background: 'gray',
                     cursor: 'row-resize',
                     position: 'absolute',
-                    bottom: 0,
+                    bottom: -10,
                     width: '100%',
                 }}
                 onMouseDown={() => setIsResizing(true)}
             />
-            <div>{JSON.stringify(windowSize)}</div>
-            <div>{height}</div>
+            {/* <div>{JSON.stringify(windowSize)}</div>
+            <div>{height}</div> */}
         <CanvasBar />
-        <Canvas height={height}/>
+        <Canvas height={height} windowSize={windowSize}/>
         <ListInstance FilterOpened={FilterOpened} height={height} className=" bg-neutral-800"/>
 
       </div>

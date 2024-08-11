@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 
 function Canvas(props) {
-  const calibateH = props.height - 640;
-
+  const windowRatio = (props.windowSize.height/953);
+  const calibateH = (props.height - 633);
+  
   return (
     <>
       <div
