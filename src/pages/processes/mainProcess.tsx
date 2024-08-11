@@ -77,7 +77,7 @@ const Processes = () => {
       <div
                 style={{
                     height: '20px',
-                    background: 'gray',
+                    // background: 'gray',
                     cursor: 'row-resize',
                     position: 'absolute',
                     bottom: -10,
