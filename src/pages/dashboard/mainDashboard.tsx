@@ -1,9 +1,9 @@
 import React from 'react';
-
+import Renderkub from '../processes/canvas/bpmnrender/bpmnnormalMode';
 const Dashboard = () => {
   return (
     <div>
-        Hello Dashboard
+        <Renderkub/>
     </div>
   );
 }

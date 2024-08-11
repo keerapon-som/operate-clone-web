@@ -77,16 +77,15 @@ const Processes = () => {
       <div
                 style={{
                     height: '20px',
-                    // background: 'gray',
+                    background: 'gray',
                     cursor: 'row-resize',
                     position: 'absolute',
                     bottom: -10,
                     width: '100%',
+                    zIndex: 1000,
                 }}
                 onMouseDown={() => setIsResizing(true)}
             />
-            {/* <div>{JSON.stringify(windowSize)}</div>
-            <div>{height}</div> */}
         <CanvasBar />
         <Canvas height={height} windowSize={windowSize}/>
         <ListInstance FilterOpened={FilterOpened} height={height} isResizing={isResizing} className=" bg-neutral-800"/>

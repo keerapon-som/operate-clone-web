@@ -13,7 +13,7 @@ function ListInstance(props) {
 
   return (
     <>
-        <div className={props.className} style={{ height: 'calc(100% - 30px)' }}>
+        <div className={props.className} style={{ height: 'calc(100% - 30px)' ,position: 'relative'}}>
             <div className={props.isResizing ? `p-3 border-t border-blue-500` : `p-3 border-t border-state-700`}>
             <label className="text-white font-medium text-sm px-4 border-r border-neutral-700">Process Instances   -   1 result</label>
             </div>
