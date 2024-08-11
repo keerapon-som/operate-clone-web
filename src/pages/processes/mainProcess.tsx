@@ -89,7 +89,7 @@ const Processes = () => {
             <div>{height}</div> */}
         <CanvasBar />
         <Canvas height={height} windowSize={windowSize}/>
-        <ListInstance FilterOpened={FilterOpened} height={height} className=" bg-neutral-800"/>
+        <ListInstance FilterOpened={FilterOpened} height={height} isResizing={isResizing} className=" bg-neutral-800"/>
 
       </div>
       <Operations />
