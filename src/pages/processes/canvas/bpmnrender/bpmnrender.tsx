@@ -1,49 +1,73 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import BpmnJS from 'bpmn-js/dist/bpmn-navigated-viewer.production.min.js';
+import './diagram-js.css';
+import './baseaddMarker.css';
 
 const BpmnViewer = ({ xml }) => {
   const containerRef = useRef(null);
+  const [theme, setTheme] = useState('light');
+  const [colorOptions, setColorOptions] = useState({
+    defaultFillColor: '#fff',
+    defaultStrokeColor: '#212121'
+  });
+
+  const handleThemeChange = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
 
   useEffect(() => {
-    try {
-      if (!xml) {
-        console.error('No BPMN XML provided');
-        return;
-      }
-
-      const bpmnViewer = new BpmnJS({
-        container: containerRef.current,
-        
-      });
-      console.log(bpmnViewer.get('canvas'));
-      // bpmnViewer.importXML(xml, (err) => {
-      //   if (err) {
-      //     console.error('Error rendering BPMN diagram:', err);
-      //   } else {
-      //     const canvas = bpmnViewer.get('canvas');
-      //     canvas.zoom('fit-viewport');
-      //   }
-      // });
-      bpmnViewer.importXML(xml).then(({ warnings }) => {
-        if (warnings.length) {
-          console.warn('Warning rendering BPMN diagram:', warnings);
-        } else {
-          const canvas = bpmnViewer.get('canvas');
-          canvas.zoom('fit-viewport');
-        }
-      });
-
-      // Cleanup on component unmount
-      return () => {
-        bpmnViewer.destroy();
-      };
-    } catch (error) {
-      console.error('Error rendering BPMN diagram:', error
-      );
+    if (!xml) {
+      console.error('No BPMN XML provided');
+      return;
     }
-  }, [xml]);
 
-  return <div ref={containerRef} style={{height:1000}} />;
+    const bpmnViewer = new BpmnJS({
+      container: containerRef.current,
+      bpmnRenderer: colorOptions,
+    });
+
+    bpmnViewer.importXML(xml).then(({ warnings }) => {
+      if (warnings.length) {
+        console.warn('Warning rendering BPMN diagram:', warnings);
+      } else {
+        const canvas = bpmnViewer.get('canvas');
+        canvas.addMarker('Activity_0nfx1ek', 'highlight');
+
+        canvas.zoom('fit-viewport');
+
+
+        
+      }
+    });
+
+    // Cleanup on component unmount
+    return () => {
+      bpmnViewer.destroy();
+    };
+  }, [xml, colorOptions]);
+
+  useEffect(() => {
+    setColorOptions(
+      theme === 'light'
+        ? { defaultFillColor: '#fff', defaultStrokeColor: '#212121' }
+        : { defaultFillColor: '#161616', defaultStrokeColor: '#b0b0b0' }
+    );
+  }, [theme]);
+
+  return (
+    <div
+      style={{
+        height: '100vh',
+        width: '100%',
+        backgroundColor: theme === 'light' ? '#eee' : '#161616'
+      }}
+    >
+      <button onClick={handleThemeChange} className='bg-green-300'>
+        {theme === 'light' ? 'Use Dark Theme' : 'Use Light Theme'}
+      </button>
+      <div ref={containerRef} style={{ height: '100%', width: '100%' }}></div>
+    </div>
+  );
 };
 
 export default BpmnViewer;
