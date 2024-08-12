@@ -5,8 +5,11 @@ import Canvas from './canvas/canvas';
 import ListInstance from './listinstance/mainListinstance';
 import './filter/layoutFilter.css'
 import Operations from './operation/mainOperation';
+import { useNavigate } from 'react-router-dom';
 
 const Processes = () => {
+  const navigate = useNavigate();
+
   const [FilterOpened, setFilterOpened] = useState(true)
   const [height, setHeight] = useState(300);
   const [isResizing, setIsResizing] = useState(false);
@@ -101,6 +104,11 @@ const Processes = () => {
       document.body.style.overflow = 'visible';
     };
   }, []); // This effect runs only once, similar to componentDidMount
+
+  useEffect(() => {
+    const navigateString = "/processes?name=" + FilteredSetup.Name.map((item) => item.value).join(",") + "&version=" + FilteredSetup.Version.map((item) => item.value).join(",") + "&flownode=" + FilteredSetup.Flownode.map((item) => item.value).join(",") + "&runningInstances=" + FilteredSetup.InstanceState.RunningInstances + "&active=" + FilteredSetup.InstanceState.Active + "&incidents=" + FilteredSetup.InstanceState.Incidents + "&finishedInstances=" + FilteredSetup.InstanceState.FinishedInstances + "&completed=" + FilteredSetup.InstanceState.Completed + "&canceled=" + FilteredSetup.InstanceState.Canceled;
+    navigate(navigateString);
+  }, [FilteredSetup]);
 
   return (
     <div className='flex'>

@@ -14,6 +14,7 @@ const options = [
 const Process: any = (props) => {
     const state = props.FilteredSetup.InstanceState;
     const setState = props.setFilteredSetup;
+    
 
     const handleClick = (e) => {  
         if (e.target.id === "Running Instances") {
@@ -26,6 +27,7 @@ const Process: any = (props) => {
                     Incidents: !state.RunningInstances
                 }
             });
+            
         } else if (e.target.id === "Finished Instances") {
             setState({
                 ...props.FilteredSetup,
@@ -36,6 +38,7 @@ const Process: any = (props) => {
                     Canceled: !state.FinishedInstances
                 }
             });
+            
         } else {
             setState({
                 ...props.FilteredSetup,
