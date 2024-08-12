@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Renderkub from '../canvas/bpmnrender/bpmnnormalMode';
+import Renderkub from '../canvas/bpmnrender/overall_mode/bpmnnormalMode';
 function Canvas(props) {
   const calibateH = (props.height - 633);
   

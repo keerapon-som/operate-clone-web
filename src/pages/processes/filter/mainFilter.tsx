@@ -17,8 +17,8 @@ function Filter(props) {
   return (
     <>
     {active ? <LayoutFilter setFilterOpened={setFilterOpened}>
-        <ProcessFilter />
-        <InstanceStateFilter/>
+        <ProcessFilter setFilteredSetup={props.setFilteredSetup} FilteredSetup={props.FilteredSetup} />
+        <InstanceStateFilter setFilteredSetup={props.setFilteredSetup} FilteredSetup={props.FilteredSetup} />
         <MoreFilter/>
         </LayoutFilter> : <div>
         <div className=' bg-neutral-800 border-t border-l border-r text-white border-neutral-700 left-0 z-20 fullMinusNavbar'>

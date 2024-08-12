@@ -67,7 +67,7 @@ function ListInstance(props) {
                           
                       </tbody>
                   </table>
-                  <div className="bg-neutral-800" style={{ height: `${750 - props.height}px`, position: 'relative' }}>gray</div>
+                  <div className="bg-neutral-800" style={{ height: `${750 - props.height}px`, position: 'relative' }}></div>
               </div>
           </div>
     </>

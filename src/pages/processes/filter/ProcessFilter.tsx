@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import Select from './components/select';
+import Filter from './mainFilter';
 
-const options = [
-    { value: '1', label: 'One' },
-    { value: '2', label: 'Two' },
-    { value: '3', label: 'Three' },
-    { value: '4', label: 'Four' },
-    { value: '5', label: 'Five' },
-]
 
-const ProcessFilter: React.FC = () => {
+
+const ProcessFilter:any = (props) => { 
+    
     return (
         <div>
         <div className="mt-5 mb-3">
@@ -19,15 +15,15 @@ const ProcessFilter: React.FC = () => {
             <div className="mb-2">
             <label className="font-normal text-xs mb-1">Name</label>
             </div>
-            <Select options={options} className="relative bg-neutral-700 mb-5" classNameoptions="text-gray-300 bg-neutral-700 text-xs"/>
+            <Select options={props.FilteredSetup.Name} className="relative bg-neutral-700 mb-5" classNameoptions="text-gray-300 bg-neutral-700 text-xs"/>
             <div className="mb-2">
             <label className="font-normal text-xs text-neutral-500">Version</label>
             </div>
-            <Select options={options} className="relative bg-neutral-700 mb-5" classNameoptions="text-gray-300 bg-neutral-700 text-xs"/>
+            <Select options={props.FilteredSetup.Version} className="relative bg-neutral-700 mb-5" classNameoptions="text-gray-300 bg-neutral-700 text-xs"/>
             <div className="mb-2">
             <label className="font-normal text-xs text-neutral-500">Flow Node</label>
             </div>
-            <Select options={options} className="relative bg-neutral-700 mb-5" classNameoptions="text-gray-300 bg-neutral-700 text-xs"/>
+            <Select options={props.FilteredSetup.Flownode} className="relative bg-neutral-700 mb-5" classNameoptions="text-gray-300 bg-neutral-700 text-xs"/>
         </div>
         </div>
     );

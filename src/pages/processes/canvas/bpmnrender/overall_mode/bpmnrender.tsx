@@ -2,6 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import BpmnJS from 'bpmn-js/dist/bpmn-navigated-viewer.production.min.js';
 import './diagram-js.css';
 import './baseaddMarker.css';
+import {PerformMarker} from './marker/index';
+
+
+let canvas = null;
 
 const BpmnViewer = ({ xml }) => {
   const containerRef = useRef(null);
@@ -31,12 +35,12 @@ const BpmnViewer = ({ xml }) => {
         console.warn('Warning rendering BPMN diagram:', warnings);
       } else {
         const canvas = bpmnViewer.get('canvas');
-        canvas.addMarker('Activity_0nfx1ek', 'highlight');
+        const elementRegistry = bpmnViewer.get('elementRegistry');
+        PerformMarker(canvas, elementRegistry);
+
+        // canvas.addMarker('Activity_0nfx1ek', 'highlight');
 
         canvas.zoom('fit-viewport');
-
-
-        
       }
     });
 
@@ -69,5 +73,5 @@ const BpmnViewer = ({ xml }) => {
     </div>
   );
 };
-
+export {canvas}
 export default BpmnViewer;

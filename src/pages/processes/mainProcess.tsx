@@ -17,6 +17,38 @@ const Processes = () => {
     height: window.innerHeight,
   });
 
+  const [FilteredSetup, setFilteredSetup] = useState({
+    Name: [
+      { value: '1', label: 'One' },
+      { value: '2', label: 'Two' },
+      { value: '3', label: 'Three' },
+      { value: '4', label: 'Four' },
+      { value: '5', label: 'Five' },
+  ],
+    Version: [
+      { value: '1', label: 'One' },
+      { value: '2', label: 'Two' },
+      { value: '3', label: 'Three' },
+      { value: '4', label: 'Four' },
+      { value: '5', label: 'Five' },
+  ],
+    Flownode: [
+      { value: '1', label: 'One' },
+      { value: '2', label: 'Two' },
+      { value: '3', label: 'Three' },
+      { value: '4', label: 'Four' },
+      { value: '5', label: 'Five' },
+  ],
+    InstanceState: {
+      RunningInstances: true,
+      Active: true,
+      Incidents: true,
+      FinishedInstances: true,
+      Completed: true,
+      Canceled: true
+  },
+  });
+
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
@@ -72,7 +104,7 @@ const Processes = () => {
 
   return (
     <div className='flex'>
-      <Filter FilterOpened={FilterOpened} setFilterOpened={setFilterOpened} />
+      <Filter setFilteredSetup={setFilteredSetup} FilteredSetup={FilteredSetup} FilterOpened={FilterOpened} setFilterOpened={setFilterOpened} />
       <div className="flex-grow " id="resizable-box"style={{ height: `${height-statset}px`, position: 'relative' }}>
       <div
                 style={{
