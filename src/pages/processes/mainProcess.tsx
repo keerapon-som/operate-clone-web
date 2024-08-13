@@ -13,7 +13,7 @@ const Processes = () => {
   const [FilterOpened, setFilterOpened] = useState(true)
   const [height, setHeight] = useState(300);
   const [isResizing, setIsResizing] = useState(false);
-  const [statset, setStatset] = useState(0);
+  const [statset, setStatset] = useState(655-(657*window.innerHeight/953));
 
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -58,9 +58,8 @@ const Processes = () => {
         width: window.innerWidth,
         height: window.innerHeight,
       });
-      const X = (window.innerHeight/953)
-      const Y = 655-(657*X)
-      setStatset(Y)
+      
+      setStatset(655-(657*window.innerHeight/953))
       // setHeight(setNewhigh);
     };
     console.log(windowSize.height);
