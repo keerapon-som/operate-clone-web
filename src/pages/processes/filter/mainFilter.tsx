@@ -8,15 +8,14 @@ import MoreFilter from "./moreFilter"
 
 function Filter(props) {
   const active = props.FilterOpened
-  const setFilterOpened = props.setFilterOpened
 
   const ClickOpenFIlter = () => {
-    setFilterOpened(true)
+    props.setFilterOpened(true)
   }
 
   return (
     <>
-    {active ? <LayoutFilter setFilterOpened={setFilterOpened}>
+    {active ? <LayoutFilter setFilterOpened={props.setFilterOpened}>
         <ProcessFilter setFilteredSetup={props.setFilteredSetup} FilteredSetup={props.FilteredSetup} />
         <InstanceStateFilter setFilteredSetup={props.setFilteredSetup} FilteredSetup={props.FilteredSetup} />
         <MoreFilter/>

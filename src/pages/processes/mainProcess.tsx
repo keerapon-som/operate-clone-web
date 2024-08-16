@@ -21,34 +21,16 @@ const Processes = () => {
   });
 
   const [FilteredSetup, setFilteredSetup] = useState({
-    Name: [
-      { value: '1', label: 'One' },
-      { value: '2', label: 'Two' },
-      { value: '3', label: 'Three' },
-      { value: '4', label: 'Four' },
-      { value: '5', label: 'Five' },
-  ],
-    Version: [
-      { value: '1', label: 'One' },
-      { value: '2', label: 'Two' },
-      { value: '3', label: 'Three' },
-      { value: '4', label: 'Four' },
-      { value: '5', label: 'Five' },
-  ],
-    Flownode: [
-      { value: '1', label: 'One' },
-      { value: '2', label: 'Two' },
-      { value: '3', label: 'Three' },
-      { value: '4', label: 'Four' },
-      { value: '5', label: 'Five' },
-  ],
+    Name: {"bpmnProcessId": "", "name": ""},
+    Version: "",
+    Flownode: "",
     InstanceState: {
       RunningInstances: true,
       Active: true,
       Incidents: true,
-      FinishedInstances: true,
-      Completed: true,
-      Canceled: true
+      FinishedInstances: false,
+      Completed: false,
+      Canceled: false
   },
   });
 
@@ -105,7 +87,8 @@ const Processes = () => {
   }, []); // This effect runs only once, similar to componentDidMount
 
   useEffect(() => {
-    const navigateString = "/processes?name=" + FilteredSetup.Name.map((item) => item.value).join(",") + "&version=" + FilteredSetup.Version.map((item) => item.value).join(",") + "&flownode=" + FilteredSetup.Flownode.map((item) => item.value).join(",") + "&runningInstances=" + FilteredSetup.InstanceState.RunningInstances + "&active=" + FilteredSetup.InstanceState.Active + "&incidents=" + FilteredSetup.InstanceState.Incidents + "&finishedInstances=" + FilteredSetup.InstanceState.FinishedInstances + "&completed=" + FilteredSetup.InstanceState.Completed + "&canceled=" + FilteredSetup.InstanceState.Canceled;
+    const navigateString = "/processes?name="
+    // const navigateString = "/processes?name=" + FilteredSetup.Name.map((item) => item.value).join(",") + "&version=" + FilteredSetup.Version.map((item) => item.value).join(",") + "&flownode=" + FilteredSetup.Flownode.map((item) => item.value).join(",") + "&runningInstances=" + FilteredSetup.InstanceState.RunningInstances + "&active=" + FilteredSetup.InstanceState.Active + "&incidents=" + FilteredSetup.InstanceState.Incidents + "&finishedInstances=" + FilteredSetup.InstanceState.FinishedInstances + "&completed=" + FilteredSetup.InstanceState.Completed + "&canceled=" + FilteredSetup.InstanceState.Canceled;
     navigate(navigateString);
   }, [FilteredSetup]);
 

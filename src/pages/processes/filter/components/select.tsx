@@ -2,24 +2,29 @@ import React, { useState } from 'react';
 
 const Select: React.FC<any> = (props:any) => {
   const [selectedOption, setSelectedOption] = useState('');
-  const {options,classNameoptions,className} = props
+  const {options,classNameoptions,className, onChange,id} = props
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedOption(e.target.value);
+    const value = e.target.value;
+    console.log("This is value from select", value)
+    setSelectedOption(value);
+    if (onChange) {
+      onChange(e);
+    }
   };
 
   return (
     <div className={className}>
-      <label htmlFor="underline_select" className="sr-only">Underline select</label>
-      <select 
-        id="underline_select" 
+      <label className="sr-only">Underline select</label>
+      <select
+        id={id}
         value={selectedOption}
         onChange={handleSelectChange}
-        className="block py-1 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-500 appearance-none dark:text-gray-300 dark:border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-400 peer"
+        className="py-1 px-5 w-full font-normal text-gray-100 bg-transparent border-b border-gray-500 appearance-none "
       >
-        <option value="" className={classNameoptions}>Search by Process Name</option>
+        <option value=""  className={classNameoptions}>Search by Process Name</option>
         {options.map((option:any) => (
-            <option value={option.value} className={classNameoptions}>
+            <option value={typeof option.value === 'object' ? JSON.stringify(option.value) : option.value} className={classNameoptions}>
             {option.label}
             </option>
         ))}
