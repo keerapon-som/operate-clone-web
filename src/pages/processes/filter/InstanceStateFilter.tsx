@@ -61,30 +61,72 @@ const Process: any = (props) => {
 
         <div className="mb-5">
         <div className="flex items-center">
-        <input onClick={handleClick} checked id="Running Instances" type={state.RunningInstances ? "checkbox":""} value="" className="form-checkbox w-4 h-4 text-white border-white-300 rounded focus:ring-white-600 ring-offset-gray-800 bg-gray-700 border-gray-600" />
+        <input 
+            onClick={handleClick} 
+            checked={state.RunningInstances}
+            id="Running Instances" 
+            type="checkbox"
+            value="" 
+            className="form-checkbox w-4 h-4 text-white border-white-300 rounded focus:ring-white-600 ring-offset-gray-800 bg-gray-700 border-gray-600" 
+            />
             <label htmlFor="red-checkbox" className="ms-2 text-sm font-normal  text-gray-300">Running Instances</label>
         </div>
         <div>
-        <input onClick={handleClick} checked id="Active" type={state.Active ? "checkbox":""} value="" className="ml-5 mt-2 form-checkbox w-4 h-4 text-white bg-white-100 border-white-300 rounded focus:ring-white-500 focus:ring-white-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600" />
+        <input 
+            onClick={handleClick} 
+            checked={state.Active}
+            id="Active" 
+            type="checkbox"
+            value="" 
+            className="ml-5 mt-2 form-checkbox w-4 h-4 text-white bg-white-100 border-white-300 rounded focus:ring-white-500 focus:ring-white-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600" 
+            />
             <label htmlFor="red-checkbox" className="ms-2 text-sm font-normal  text-gray-300">Active</label>
         </div>
         <div>
-        <input onClick={handleClick} checked id="Incidents" type={state.Incidents ? "checkbox":""} value="" className="ml-5 mt-2 form-checkbox w-4 h-4 text-white bg-white-100 border-white-300 rounded focus:ring-white-500 focus:ring-white-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600" />
+        <input 
+            onClick={handleClick} 
+            checked={state.Incidents}
+            id="Incidents" 
+            type="checkbox"
+            value="" 
+            className="ml-5 mt-2 form-checkbox w-4 h-4 text-white bg-white-100 border-white-300 rounded focus:ring-white-500 focus:ring-white-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600" 
+            />
             <label htmlFor="red-checkbox" className="ms-2 text-sm font-normal  text-gray-300">Incidents</label>
         </div>
 
         </div>
         <div className="mb-5">
         <div className="flex items-center">
-        <input onClick={handleClick} checked id="Finished Instances" type={state.FinishedInstances ? "checkbox":""} value="" className="form-checkbox w-4 h-4 text-white bg-white-100 border-white-300 rounded focus:ring-white-500 focus:ring-white-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600" />
+        <input 
+            onClick={handleClick} 
+            checked={state.FinishedInstances}
+            id="Finished Instances"
+            type="checkbox"
+            value="" 
+            className="form-checkbox w-4 h-4 text-white bg-white-100 border-white-300 rounded focus:ring-white-500 focus:ring-white-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600" 
+            />
             <label htmlFor="red-checkbox" className="ms-2 text-sm font-normal  text-gray-300">Finished Instances</label>
         </div>
         <div>
-        <input onClick={handleClick} checked id="Completed" type={state.Completed ? "checkbox":""} value="" className="ml-5 mt-2 form-checkbox w-4 h-4 text-white bg-white-100 border-white-300 rounded focus:ring-white-500 focus:ring-white-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600" />
+        <input 
+            onClick={handleClick} 
+            checked={state.Completed}
+            id="Completed" 
+            type="checkbox"
+            value="" 
+            className="ml-5 mt-2 form-checkbox w-4 h-4 text-white bg-white-100 border-white-300 rounded focus:ring-white-500 focus:ring-white-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600" 
+            />
             <label htmlFor="red-checkbox" className="ms-2 text-sm font-normal  text-gray-300">Completed</label>
         </div>
         <div>
-        <input onClick={handleClick} checked id="Canceled" type={state.Canceled ? "checkbox":""} value="" className="ml-5 mt-2 form-checkbox w-4 h-4 text-white bg-white-100 border-white-300 rounded focus:ring-white-500 focus:ring-white-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600" />
+        <input 
+            onClick={handleClick} 
+            checked={state.Canceled}
+            id="Canceled" 
+            type="checkbox"
+            value="" 
+            className="ml-5 mt-2 form-checkbox w-4 h-4 text-white bg-white-100 border-white-300 rounded focus:ring-white-500 focus:ring-white-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600" 
+            />
             <label htmlFor="red-checkbox" className="ms-2 text-sm font-normal  text-gray-300">Canceled</label>
         </div>
 

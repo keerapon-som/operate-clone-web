@@ -44,7 +44,6 @@ const Processes = () => {
       setStatset(655-(657*window.innerHeight/953))
       // setHeight(setNewhigh);
     };
-    console.log(windowSize.height);
     window.addEventListener('resize', handleResize);
 
     // Cleanup event listener on component unmount

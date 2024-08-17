@@ -16,8 +16,8 @@ function LayoutFilter(props:any) {
                <span className="px-4">Filter</span>
             </a>
             <a  onClick={ClickCloseFilter} href="#" className="flex items-center rounded-lg text-white hover:bg-gray-700 group">
-            <svg  className="w-12 h-7  text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-               <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"/>
+            <svg  className="w-12 h-7" width="24" height="24" fill="none" viewBox="0 0 24 24">
+               <path stroke="currentColor" strokeWidth="2" d="M5 7h14M5 12h14M5 17h10"/>
             </svg>
             </a>
          </li>

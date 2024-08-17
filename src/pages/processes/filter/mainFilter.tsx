@@ -1,4 +1,4 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 // import Navbar from './layout/navbar'
 // import AppRoutes from './routes'
 import LayoutFilter from "./layoutFilter"
@@ -24,7 +24,7 @@ function Filter(props) {
           
           <a  onClick={ClickOpenFIlter} href="#" className="py-2 px-2 flex items-center rounded-lg text-white hover:bg-gray-700 group">
             <svg className="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-               <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"/>
+               <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h10"/>
             </svg>
             </a>
             <div className="py-6"style={{ transform: 'rotate(-90deg)' }}>Filter</div>
