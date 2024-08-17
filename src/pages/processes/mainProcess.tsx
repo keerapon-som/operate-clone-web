@@ -5,11 +5,19 @@ import Canvas from './canvas/canvas';
 import ListInstance from './listinstance/mainListinstance';
 import './filter/layoutFilter.css'
 import Operations from './operation/mainOperation';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Processes = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
+  const [ProcessComponentControl, setProcessComponentControl] = useState({
+    Filter: true,
+    CanvasBar: true,
+    Canvas: true,
+    ListInstance: true,
+    Operations: true
+  });
   const [FilterOpened, setFilterOpened] = useState(true)
   const [height, setHeight] = useState(300);
   const [isResizing, setIsResizing] = useState(false);
@@ -22,7 +30,7 @@ const Processes = () => {
 
   const [FilteredSetup, setFilteredSetup] = useState({
     Name: {"bpmnProcessId": "", "name": ""},
-    Version: "",
+    Version: 0,
     Flownode: "",
     InstanceState: {
       RunningInstances: true,
@@ -35,6 +43,20 @@ const Processes = () => {
   });
 
   useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    setFilteredSetup({
+      Name: { bpmnProcessId: params.get('process') || '', name: '' },
+      Version: parseInt(params.get('version') || '0', 10),
+      Flownode: params.get('flownode') || '',
+      InstanceState: {
+        RunningInstances: params.get('RunningInstances') === 'false',
+        Active: params.get('active') === 'true',
+        Incidents: params.get('incidents') === 'true',
+        FinishedInstances: params.get('FinishedInstances') === 'false',
+        Completed: params.get('completed') === 'false',
+        Canceled: params.get('canceled') === 'false',
+      },
+    });
     const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,
@@ -75,25 +97,47 @@ const Processes = () => {
     };
 }, [isResizing]);
 
-  useEffect(() => {
-    // Disable scrolling on the entire page when the component mounts
-    document.body.style.overflow = 'hidden';
+  // useEffect(() => {
+  //   // Disable scrolling on the entire page when the component mounts
+  //   document.body.style.overflow = 'hidden';
 
-    // Re-enable scrolling on the entire page when the component unmounts
-    return () => {
-      document.body.style.overflow = 'visible';
+  //   // Re-enable scrolling on the entire page when the component unmounts
+  //   return () => {
+  //     document.body.style.overflow = 'visible';
+  //   };
+  // }, []); // This effect runs only once, similar to componentDidMount
+
+  const handleNavigate = () => {
+    const params = {
+      process: FilteredSetup.Name.bpmnProcessId,
+      version: FilteredSetup.Version.toString(),
+      flownode: FilteredSetup.Flownode,
+      // RunningInstances: FilteredSetup.InstanceState.RunningInstances.toString(),
+      active: FilteredSetup.InstanceState.Active.toString(),
+      incidents: FilteredSetup.InstanceState.Incidents.toString(),
+      // FinishedInstances: FilteredSetup.InstanceState.FinishedInstances.toString(),
+      completed: FilteredSetup.InstanceState.Completed.toString(),
+      canceled: FilteredSetup.InstanceState.Canceled.toString(),
     };
-  }, []); // This effect runs only once, similar to componentDidMount
+  
+    const filteredParams = Object.fromEntries(
+      Object.entries(params).filter(
+        ([_, value]) => value !== null && value !== "" && value !== "false"
+      )
+    );
+  
+    const queryString = new URLSearchParams(filteredParams).toString();
+  
+    navigate(`/processes?${queryString}`);
+  };
 
   useEffect(() => {
-    const navigateString = "/processes?name="
-    // const navigateString = "/processes?name=" + FilteredSetup.Name.map((item) => item.value).join(",") + "&version=" + FilteredSetup.Version.map((item) => item.value).join(",") + "&flownode=" + FilteredSetup.Flownode.map((item) => item.value).join(",") + "&runningInstances=" + FilteredSetup.InstanceState.RunningInstances + "&active=" + FilteredSetup.InstanceState.Active + "&incidents=" + FilteredSetup.InstanceState.Incidents + "&finishedInstances=" + FilteredSetup.InstanceState.FinishedInstances + "&completed=" + FilteredSetup.InstanceState.Completed + "&canceled=" + FilteredSetup.InstanceState.Canceled;
-    navigate(navigateString);
+    handleNavigate();
   }, [FilteredSetup]);
 
   return (
     <div className='flex'>
-      <Filter setFilteredSetup={setFilteredSetup} FilteredSetup={FilteredSetup} FilterOpened={FilterOpened} setFilterOpened={setFilterOpened} />
+      {ProcessComponentControl.Filter ? <Filter setFilteredSetup={setFilteredSetup} FilteredSetup={FilteredSetup} FilterOpened={FilterOpened} setFilterOpened={setFilterOpened} /> : null}
       <div className="flex-grow " id="resizable-box"style={{ height: `${height-statset}px`, position: 'relative' }}>
       <div
                 style={{

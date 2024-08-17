@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const menuItems = [
   { label: "Dashboard", key: "Dashboard", path: "/dashboard" },
-  { label: "Processes", key: "Processes", path: "/processes" },
+  { label: "Processes", key: "Processes", path: "/processes?active=true&incidents=true" },
 ];
 
 const allmenu: any[] = menuItems.map((menu) => {
