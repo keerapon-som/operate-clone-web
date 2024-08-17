@@ -22,6 +22,7 @@ const Processes = () => {
   const [height, setHeight] = useState(300);
   const [isResizing, setIsResizing] = useState(false);
   const [statset, setStatset] = useState(655-(657*window.innerHeight/953));
+  const [oldqueryString, setOldqueryString] = useState("");
 
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -122,13 +123,17 @@ const Processes = () => {
   
     const filteredParams = Object.fromEntries(
       Object.entries(params).filter(
-        ([_, value]) => value !== null && value !== "" && value !== "false"
+        ([_, value]) => value !== null && value !== "" && value !== "false" && value !== "0"
       )
     );
   
     const queryString = new URLSearchParams(filteredParams).toString();
-  
-    navigate(`/processes?${queryString}`);
+    
+    if (queryString !== oldqueryString ) {
+      navigate(`/processes?${queryString}`);
+      console.log("eiei navigate", queryString);
+      setOldqueryString(queryString);
+    }
   };
 
   useEffect(() => {
@@ -142,7 +147,7 @@ const Processes = () => {
       <div
                 style={{
                     height: '20px',
-                    // background: 'gray',
+                    background: 'gray',
                     cursor: 'row-resize',
                     position: 'absolute',
                     bottom: -10,
