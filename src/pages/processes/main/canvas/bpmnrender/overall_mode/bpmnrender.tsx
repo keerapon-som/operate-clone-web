@@ -63,7 +63,7 @@ const BpmnViewer = ({ xml,height }) => {
     <div
       style={{
         backgroundColor: theme === 'light' ? '#eee' : '#161616',
-        height: `${height-35}px`,
+        height: `${height-53}px`,
         width: '100%',
       }}
     >

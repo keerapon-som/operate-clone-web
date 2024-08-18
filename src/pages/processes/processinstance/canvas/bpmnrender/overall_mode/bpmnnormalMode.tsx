@@ -1,0 +1,104 @@
+import React from 'react';
+import BpmnViewer from './bpmnrender';
+
+const Renderkub = (props) => {
+  const bpmnXml = `<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_18j1oz6" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.23.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <bpmn:process id="YIMMMZZZZ" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="UserTaskForm_26s9ncd">{}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1wp2h13</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_1fviujb">
+      <bpmn:incoming>Flow_1ruff1a</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1wp2h13" sourceRef="StartEvent_1" targetRef="Activity_0nfx1ek" />
+    <bpmn:sequenceFlow id="Flow_0gopcek" sourceRef="Activity_0nfx1ek" targetRef="Activity_0464vzx" />
+    <bpmn:userTask id="Activity_0nfx1ek" name="usertask">
+      <bpmn:extensionElements>
+        <zeebe:assignmentDefinition assignee="=Assignna" candidateGroups="=[&#34;xx&#34;,&#34;xx&#34;]" candidateUsers="=[&#34;yyyy&#34;]" />
+        <zeebe:ioMapping>
+          <zeebe:input source="=eiei" target="ccc" />
+          <zeebe:input source="=&#34;x&#34;" target="zzz" />
+          <zeebe:input source="=string(eiei) + &#34;11&#34;" target="sa1" />
+        </zeebe:ioMapping>
+        <zeebe:taskSchedule dueDate="2023-04-12T14:30:00Z" followUpDate="2023-04-12T14:30:00Z" />
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_26s9ncd" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1wp2h13</bpmn:incoming>
+      <bpmn:outgoing>Flow_0gopcek</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:task id="Activity_0464vzx" name="xxx">
+      <bpmn:incoming>Flow_0gopcek</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ruff1a</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1ruff1a" sourceRef="Activity_0464vzx" targetRef="Event_1fviujb" />
+    <bpmn:boundaryEvent id="Event_1ai40iw" attachedToRef="Activity_0nfx1ek">
+      <bpmn:outgoing>Flow_0spfx42</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0gudinu" messageRef="Message_205sr9i" />
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="Event_0ozyg4m">
+      <bpmn:incoming>Flow_0spfx42</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0spfx42" sourceRef="Event_1ai40iw" targetRef="Event_0ozyg4m" />
+  </bpmn:process>
+  <bpmn:message id="Message_205sr9i" name="sss">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=xxx" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="YIMMMZZZZ">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0h1zpjd_di" bpmnElement="Activity_0nfx1ek">
+        <dc:Bounds x="230" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1fviujb_di" bpmnElement="Event_1fviujb">
+        <dc:Bounds x="542" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0464vzx_di" bpmnElement="Activity_0464vzx">
+        <dc:Bounds x="380" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ozyg4m_di" bpmnElement="Event_0ozyg4m">
+        <dc:Bounds x="312" y="222" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_06pdqb1_di" bpmnElement="Event_1ai40iw">
+        <dc:Bounds x="262" y="139" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1wp2h13_di" bpmnElement="Flow_1wp2h13">
+        <di:waypoint x="188" y="117" />
+        <di:waypoint x="230" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gopcek_di" bpmnElement="Flow_0gopcek">
+        <di:waypoint x="330" y="117" />
+        <di:waypoint x="380" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ruff1a_di" bpmnElement="Flow_1ruff1a">
+        <di:waypoint x="480" y="117" />
+        <di:waypoint x="542" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0spfx42_di" bpmnElement="Flow_0spfx42">
+        <di:waypoint x="280" y="175" />
+        <di:waypoint x="280" y="240" />
+        <di:waypoint x="312" y="240" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
+  `;
+
+
+  return (
+    <div>
+      <BpmnViewer xml={bpmnXml} height={props.height}/>
+    </div>
+  );
+};
+
+export default Renderkub;

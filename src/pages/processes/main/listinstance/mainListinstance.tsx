@@ -285,7 +285,7 @@ function ListInstance(props) {
                                 className="form-checkbox w-4 h-4 text-white border-white-300 rounded focus:ring-white-600 ring-offset-gray-800 bg-gray-700 border-gray-600" 
                                 />
                               </th>
-                              <th scope="col" className="pl-3 px-10 w-56 h-4 pb-1 hover:bg-neutral-600">
+                              <th scope="col" className="pl-3 px-10 w-56 h-4 pb-1 hover:bg-neutral-600 ">
                                   Name
                               </th>
                               <th scope="col" className="pl-3 px-1 w-64 h-4 pb-1 hover:bg-neutral-600">
@@ -310,21 +310,24 @@ function ListInstance(props) {
                       </thead>
                       <tbody>
                       {processInstances.processInstances.map(instance => (
-                        <tr key={instance.id}>
-                        <th scope="col" className="pl-4 px-1 py-2 hover:bg-neutral-600">
+                        <tr className="hover:text-blue-400 hover:bg-neutral-700 hover:bg-opacity-40" key={instance.id}>
+                        <th scope="col" className="pl-4 px-1 py-2  ">
                           <input 
                                 id={instance.id}
                                 type="checkbox"
                                 value="" 
-                                className="form-checkbox w-4 h-4 text-white border-white-300 rounded focus:ring-white-600 ring-offset-gray-800 bg-gray-700 border-gray-600" 
+                                className=" form-checkbox w-4 h-4 text-white border-white-300 rounded focus:ring-white-600 ring-offset-gray-800 bg-gray-700 border-gray-600" 
                                 />
-                              </th>
-                                    <td className="pl-3 px-10 w-56 h-4 pb-1">{instance.processName}</td>
-                                    <td className="pl-3 px-1 w-64 h-4 pb-1">{instance.id}</td>
-                                    <td className="pl-3 px-1 w-32 h-4 pb-1">{instance.processVersion}</td>
-                                    <td className="pl-3 px-1 w-56 h-4 pb-1">{new Date(instance.startDate).toLocaleString()}</td>
-                                    <td className="pl-3 px-1 w-56 h-4 pb-1">{instance.endDate ? new Date(instance.endDate).toLocaleString() : '--'}</td>
-                                    <td className="pl-3 px-1 w-72 h-4 pb-1">{instance.parentInstanceId || 'None'}</td>
+                              </th >
+                                    <td className="pl-3 px-10 w-56 h-4 pb-1" id={instance.id}>{instance.processName}</td>
+                                    <a href={`http://localhost:5173/processes/${instance.id}`} className="pl-3 px-1 w-64 h-4 pb-1" id={instance.id}> 
+                                        {instance.id}
+                                        </a>
+                                    <td className="pl-3 px-1 w-32 h-4 pb-1" id={instance.id}>{instance.processVersion}</td>
+                                    <td className="pl-3 px-1 w-56 h-4 pb-1" id={instance.id}>{new Date(instance.startDate).toLocaleString()}</td>
+                                    <td className="pl-3 px-1 w-56 h-4 pb-1" id={instance.id}>{instance.endDate ? new Date(instance.endDate).toLocaleString() : '--'}</td>
+                                    <td className="pl-3 px-1 w-72 h-4 pb-1" id={instance.id}>{instance.parentInstanceId || 'None'}</td>
+                                    <td className="pl-3 px-1 w-72 h-4 pb-1" id={instance.id}>xxxx operation</td>
                                 </tr>
                                 ))}
                                 

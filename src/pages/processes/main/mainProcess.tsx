@@ -19,7 +19,7 @@ const Processes = () => {
     Operations: true
   });
   const [FilterOpened, setFilterOpened] = useState(true)
-  const [height, setHeight] = useState(200);
+  const [height, setHeight] = useState(500);
   const [isResizing, setIsResizing] = useState(false);
   // const [statset, setStatset] = useState(655-(657*window.innerHeight/953));
   const [oldqueryString, setOldqueryString] = useState("");
@@ -167,7 +167,7 @@ const Processes = () => {
             <label className="text-white font-medium text-sm px-2 border-r border-neutral-700 ">Process Instances   -   1 result</label>
             </div>
 
-        <ListInstance FilterOpened={FilterOpened} height={height} isResizing={isResizing} className=" bg-neutral-800 overflow-auto " style={{ height: `calc(${953-height-121}px)` }}/>
+        <ListInstance FilterOpened={FilterOpened} height={height} isResizing={isResizing} className=" bg-neutral-800 overflow-auto " style={{ height: `calc(${windowSize.height-height-103}px)` }}/>
       </div>
       
       {/* <Operations /> */}
