@@ -14,7 +14,6 @@ const BpmnViewer = ({ xml,height }) => {
     defaultFillColor: '#fff',
     defaultStrokeColor: '#212121'
   });
-  console.log("mal ja", height)
 
   const handleThemeChange = () => {
     setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
@@ -68,7 +67,7 @@ const BpmnViewer = ({ xml,height }) => {
       }}
     >
       <button onClick={handleThemeChange} className='bg-green-300 absolute z-50'>
-        {theme === 'light' ? `Use Dark Theme ${height}` : 'Use Light Theme'}
+        {theme === 'light' ? `Use Dark Theme` : 'Use Light Theme'}
       </button>
       <div ref={containerRef} style={{ height: '100%', width: '100%' }}></div>
     </div>

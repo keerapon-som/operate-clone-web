@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const processInstances = {
     "processInstances": [
@@ -260,6 +261,8 @@ const processInstances = {
 
 
 function ListInstance(props) {
+    const navigate = useNavigate();
+
     const FilterOpened = props.FilterOpened
     let CalFilter = ''
     if (FilterOpened) {
@@ -320,9 +323,7 @@ function ListInstance(props) {
                                 />
                               </th >
                                     <td className="pl-3 px-10 w-56 h-4 pb-1" id={instance.id}>{instance.processName}</td>
-                                    <a href={`http://localhost:5173/processes/${instance.id}`} className="pl-3 px-1 w-64 h-4 pb-1" id={instance.id}> 
-                                        {instance.id}
-                                        </a>
+                                    <td onClick={() => navigate(`/processes/${instance.id}`)} className="pl-3 px-1 w-64 h-4 pb-1 cursor-pointer" id={instance.id}>{instance.id}</td>
                                     <td className="pl-3 px-1 w-32 h-4 pb-1" id={instance.id}>{instance.processVersion}</td>
                                     <td className="pl-3 px-1 w-56 h-4 pb-1" id={instance.id}>{new Date(instance.startDate).toLocaleString()}</td>
                                     <td className="pl-3 px-1 w-56 h-4 pb-1" id={instance.id}>{instance.endDate ? new Date(instance.endDate).toLocaleString() : '--'}</td>

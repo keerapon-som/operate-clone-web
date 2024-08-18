@@ -1,7 +1,29 @@
 
+import { useParams } from 'react-router-dom';
 
+const processinstance = {
+  "id": "2251799813685294",
+  "processId": "2251799813685292",
+  "processName": "eieiTheYIMName",
+  "processVersion": 5,
+  "startDate": "2024-08-16T15:21:56.466+0000",
+  "endDate": null,
+  "state": "ACTIVE",
+  "bpmnProcessId": "TheYimIDNA",
+  "hasActiveOperation": false,
+  "operations": [],
+  "parentInstanceId": null,
+  "rootInstanceId": null,
+  "callHierarchy": [],
+  "tenantId": "<default>",
+  "sortValues": null,
+  "permissions": []
+}
 
 function BottomBar() {
+
+  const { id } = useParams<{ id: string }>();
+  console.log(id);
 
   return (
     <>
