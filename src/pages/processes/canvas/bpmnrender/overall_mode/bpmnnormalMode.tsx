@@ -1,7 +1,7 @@
 import React from 'react';
 import BpmnViewer from './bpmnrender';
 
-const Renderkub = () => {
+const Renderkub = (props) => {
   const bpmnXml = `<?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_18j1oz6" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.23.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
   <bpmn:process id="YIMMMZZZZ" isExecutable="true">
@@ -93,9 +93,10 @@ const Renderkub = () => {
 </bpmn:definitions>
   `;
 
+
   return (
     <div>
-      <BpmnViewer xml={bpmnXml}/>
+      <BpmnViewer xml={bpmnXml} height={props.height}/>
     </div>
   );
 };

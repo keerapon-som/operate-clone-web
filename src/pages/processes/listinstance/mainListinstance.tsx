@@ -271,12 +271,10 @@ function ListInstance(props) {
 
   return (
     <>
-        <div className={props.className} style={{ height: 'calc(100% - 30px)' ,position: 'relative'}}>
-            <div className={props.isResizing ? `p-3 border-t-2 border-blue-500` : `p-3 border-t border-state-700`}>
-            <label className="text-white font-medium text-sm px-2 border-r border-neutral-700">Process Instances   -   1 result</label>
-            </div>
+        <div className={props.className} style={props.style}>
+
               <div>
-                  <table className="w-full text-sm text-left rtl:text-right text-neutral-400">
+                  <table className="w-full text-sm text-left rtl:text-right text-neutral-400 ">
                       <thead className="text-xs uppercase bg-neutral-700 text-neutral-400">
                           <tr >
                           <th scope="col" className="pl-4 px-1 py-2 hover:bg-neutral-600">
@@ -329,10 +327,12 @@ function ListInstance(props) {
                                     <td className="pl-3 px-1 w-72 h-4 pb-1">{instance.parentInstanceId || 'None'}</td>
                                 </tr>
                                 ))}
+                                
                       </tbody>
+                      
                   </table>
-                  <div className="bg-neutral-800 max-h-10" style={{ height: `${750 - props.height}px`, position: 'relative' }}></div>
               </div>
+              
           </div>
     </>
   )

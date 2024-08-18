@@ -7,13 +7,14 @@ import {PerformMarker} from './marker/index';
 
 let canvas = null;
 
-const BpmnViewer = ({ xml }) => {
+const BpmnViewer = ({ xml,height }) => {
   const containerRef = useRef(null);
   const [theme, setTheme] = useState('light');
   const [colorOptions, setColorOptions] = useState({
     defaultFillColor: '#fff',
     defaultStrokeColor: '#212121'
   });
+  console.log("mal ja", height)
 
   const handleThemeChange = () => {
     setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
@@ -61,13 +62,13 @@ const BpmnViewer = ({ xml }) => {
   return (
     <div
       style={{
-        height: '100vh',
+        backgroundColor: theme === 'light' ? '#eee' : '#161616',
+        height: `${height-35}px`,
         width: '100%',
-        backgroundColor: theme === 'light' ? '#eee' : '#161616'
       }}
     >
-      <button onClick={handleThemeChange} className='bg-green-300'>
-        {theme === 'light' ? 'Use Dark Theme' : 'Use Light Theme'}
+      <button onClick={handleThemeChange} className='bg-green-300 absolute z-50'>
+        {theme === 'light' ? `Use Dark Theme ${height}` : 'Use Light Theme'}
       </button>
       <div ref={containerRef} style={{ height: '100%', width: '100%' }}></div>
     </div>

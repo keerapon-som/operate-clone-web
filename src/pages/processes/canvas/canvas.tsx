@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import Renderkub from '../canvas/bpmnrender/overall_mode/bpmnnormalMode';
 function Canvas(props) {
-  const calibateH = (props.height - 633);
+  // const calibateH = (props.height - 633);
   
   return (
     <>
       <div
-        // className="bg-neutral-900 text-white"
-        style={{ height: `calc(70vh - 84px + ${calibateH}px)`, width: '100%' }}
+        // style={{ height: `calc(70vh - 84px + ${calibateH}px)`, width: '100%' }}
+        style={{ height: `calc(${props.height-35}px)`, width: '100%' }}
       >
-        <Renderkub />
+        <Renderkub height={props.height}/>
       </div>
     </>
   );
