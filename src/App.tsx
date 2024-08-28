@@ -9,9 +9,10 @@ function App() {
 
   return (
     <>
-    
+    <div className="h-screen w-screen flex flex-col bg-slate-400">
     <Navbar/>
     <AppRoutes/>
+    </div>
     </>
   )
 }

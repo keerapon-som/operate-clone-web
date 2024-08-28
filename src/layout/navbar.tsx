@@ -17,12 +17,12 @@ const allmenu: any[] = menuItems.map((menu) => {
 
 function Navbar() {
   return (
-    <>
+    <div>
       <nav className="border-gray-200 bg-neutral-900">
         <div className="items-center justify-between py-1">
           <div>
             <ul className="flex font-normal">
-              <div key="OPERATE-CLONE">
+              <div >
                 <a className="block py-2 p-2 mr-5 text-neutral-300 hover:bg-transparent">
                   OPERATE-CLONE
                 </a>
@@ -32,7 +32,7 @@ function Navbar() {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 }
 

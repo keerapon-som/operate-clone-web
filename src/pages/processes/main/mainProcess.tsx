@@ -19,7 +19,7 @@ const Processes = () => {
     Operations: true
   });
   const [FilterOpened, setFilterOpened] = useState(true)
-  const [height, setHeight] = useState(500);
+  const [height, setHeight] = useState(60);
   const [isResizing, setIsResizing] = useState(false);
   // const [statset, setStatset] = useState(655-(657*window.innerHeight/953));
   const [oldqueryString, setOldqueryString] = useState("");
@@ -78,10 +78,12 @@ const Processes = () => {
   useEffect(() => {
     const handleMouseMove = (event) => {
         if (isResizing) {
-            const newHeight = event.clientY - document.getElementById('resizable-box').getBoundingClientRect().top;
-            if (newHeight >= 200 && newHeight <= 700) {
-                setHeight(newHeight);
-            }
+          console.log(window.innerHeight)
+          const newHeight = (event.clientY-50)/(window.innerHeight-50)*100;
+          console.log(newHeight)
+          if (newHeight >= 20 && newHeight <= 80) {
+              setHeight(newHeight);
+          }
         }
     };
 
@@ -141,39 +143,42 @@ const Processes = () => {
   }, [FilteredSetup]);
   // style={{ height: `${height-statset}px`, position: 'relative' }}
   return (
-    <div className='flex'>
+    <div className='flex flex-1'>
       {ProcessComponentControl.Filter ? <Filter setFilteredSetup={setFilteredSetup} FilteredSetup={FilteredSetup} FilterOpened={FilterOpened} setFilterOpened={setFilterOpened} /> : null}
       {/* ไม่เห็นต้องกำหนดความสูงตรงนี้เลย */}
-      <div className="flex-grow" id="resizable-box" >
-
+      <div className="flex-grow h-auto overflow-auto" id="resizable-box" >
+    <div style={{ height: `calc(${height}% + 0px)`, width: '100%' }}>
         <CanvasBar />
 
-        <Canvas height={height} windowSize={windowSize}/>
-
+        {/* <Canvas height={height} windowSize={windowSize}/> */}
+        </div>
         <div
                 style={{
-                    // height: '5px',
-                    // background: 'blue',
+                    height: '0px',
+                    background: 'blue',
                     cursor: 'row-resize',
-                    // position: 'absolute',
+                    position: 'relative',
+                    justifyContent: 'center',
                     // bottom: `${900-height}px`,
                     // width: '100%',
                     // zIndex: 1000,
                 }}
                 onMouseDown={() => setIsResizing(true)}
-                className={isResizing ?`p-1 border-t border-state-700 bg-blue-500` : `p-1 border-t border-state-700 bg-neutral-800`}
-            />
-        <div className={`p-3 border-t border-state-700 bg-neutral-800`}>
+                // className={isResizing ?`p-1 border-t border-state-700 bg-blue-500` : `p-1 border-t border-state-700 bg-neutral-800`}
+            >
+              <div className="border-2"></div>
+            </div>
+            <div style={{ height: `calc(${100-height}% + 0px)`, width: '100%' }} className="bg-neutral-800 overflow-auto">
+        <div className={`p-3 border-t border-state-700 `}>
             <label className="text-white font-medium text-sm px-2 border-r border-neutral-700 ">Process Instances   -   1 result</label>
             </div>
 
-        <ListInstance FilterOpened={FilterOpened} height={height} isResizing={isResizing} className=" bg-neutral-800 overflow-auto " style={{ height: `calc(${windowSize.height-height-103}px)` }}/>
+        <ListInstance FilterOpened={FilterOpened} height={height} isResizing={isResizing} className=" bg-neutral-800  "/>
       </div>
-      
+      </div>
       {/* <Operations /> */}
       
     </div>
-    
   );
 };
 
