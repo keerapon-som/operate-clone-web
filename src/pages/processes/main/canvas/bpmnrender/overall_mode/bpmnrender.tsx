@@ -7,7 +7,7 @@ import {PerformMarker} from './marker/index';
 
 let canvas = null;
 
-const BpmnViewer = ({ xml,height }) => {
+const BpmnViewer = ({ xml,height,windowSize }) => {
   const containerRef = useRef(null);
   const [theme, setTheme] = useState('light');
   const [colorOptions, setColorOptions] = useState({
@@ -59,14 +59,8 @@ const BpmnViewer = ({ xml,height }) => {
   }, [theme]);
 
   return (
-    <div
-      style={{
-        backgroundColor: theme === 'light' ? '#eee' : '#161616',
-        height: `${height-53}px`,
-        width: '100%',
-      }}
-    >
-      <button onClick={handleThemeChange} className='bg-green-300 absolute z-50'>
+    <div style={{width: '100%', height:'100%', display:'flex', justifyContent:'center',position:'relative'}}>
+      <button onClick={handleThemeChange} className='bg-green-300 z-50'>
         {theme === 'light' ? `Use Dark Theme` : 'Use Light Theme'}
       </button>
       <div ref={containerRef} style={{ height: '100%', width: '100%' }}></div>

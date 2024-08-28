@@ -95,9 +95,9 @@ const Renderkub = (props) => {
 
 
   return (
-    <div>
-      <BpmnViewer xml={bpmnXml} height={props.height}/>
-    </div>
+    < >
+      <BpmnViewer xml={bpmnXml} height={props.height} windowSize={props.windowSize}/>
+    </>
   );
 };
 

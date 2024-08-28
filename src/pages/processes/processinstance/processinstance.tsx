@@ -11,7 +11,7 @@ const Procesinstance = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [height, setHeight] = useState(500);
+  const [height, setHeight] = useState(30);
   const [isResizing, setIsResizing] = useState(false);
   // const [statset, setStatset] = useState(655-(657*window.innerHeight/953));
 
@@ -57,12 +57,12 @@ const Procesinstance = () => {
 
   useEffect(() => {
     const handleMouseMove = (event) => {
-        if (isResizing) {
-            const newHeight = event.clientY - document.getElementById('resizable-box').getBoundingClientRect().top;
-            if (newHeight >= 200 && newHeight <= 700) {
-                setHeight(newHeight);
-            }
+      if (isResizing) {
+        const newHeight = (event.clientY-50)/(window.innerHeight-50)*100;
+        if (newHeight >= 20 && newHeight <= 80) {
+            setHeight(newHeight);
         }
+      }
     };
 
     const handleMouseUp = () => {
@@ -121,25 +121,30 @@ const Procesinstance = () => {
   // }, [FilteredSetup]);
   // style={{ height: `${height-statset}px`, position: 'relative' }}
   return (
-    <div className='flex'>
+    <div className='flex flex-1'>
       {/* {ProcessComponentControl.Filter ? <Filter setFilteredSetup={setFilteredSetup} FilteredSetup={FilteredSetup} FilterOpened={FilterOpened} setFilterOpened={setFilterOpened} /> : null} */}
       {/* ไม่เห็นต้องกำหนดความสูงตรงนี้เลย */}
       <div className="flex-grow" id="resizable-box" >
+        <div >
         <CanvasBar />
         <Canvas height={height} windowSize={windowSize}/>
+        </div>
         <div
                 style={{
-                    // height: '5px',
-                    // background: 'blue',
-                    cursor: 'n-resize',
-                    // position: 'absolute',
+                    height: '0px',
+                    background: 'blue',
+                    cursor: 'ns-resize',
+                    position: 'relative',
+                    justifyContent: 'center',
                     // bottom: `${900-height}px`,
                     // width: '100%',
                     // zIndex: 1000,
                 }}
                 onMouseDown={() => setIsResizing(true)}
-                className={isResizing ?`p-1 border-t border-state-700 bg-blue-500` : `p-1 border-t border-state-700 bg-state-700`}
-            />
+                // className={isResizing ?`p-1 border-t border-state-700 bg-blue-500` : `p-1 border-t border-state-700 bg-neutral-800`}
+            >
+              <div className={isResizing ? `border-2 border-blue-500` : `border-2 border-state-700`}></div>
+            </div>
             <div className='flex bg-neutral-800 ' style={{ height: `calc(${windowSize.height-height-53}px)` }}>
               <BottomBar/>
             </div>

@@ -78,9 +78,7 @@ const Processes = () => {
   useEffect(() => {
     const handleMouseMove = (event) => {
         if (isResizing) {
-          console.log(window.innerHeight)
           const newHeight = (event.clientY-50)/(window.innerHeight-50)*100;
-          console.log(newHeight)
           if (newHeight >= 20 && newHeight <= 80) {
               setHeight(newHeight);
           }
@@ -147,16 +145,16 @@ const Processes = () => {
       {ProcessComponentControl.Filter ? <Filter setFilteredSetup={setFilteredSetup} FilteredSetup={FilteredSetup} FilterOpened={FilterOpened} setFilterOpened={setFilterOpened} /> : null}
       {/* ไม่เห็นต้องกำหนดความสูงตรงนี้เลย */}
       <div className="flex-grow h-auto overflow-auto" id="resizable-box" >
-    <div style={{ height: `calc(${height}% + 0px)`, width: '100%' }}>
+      <div style={{ height: `calc(${height}% + 0px)`, width: '100%', display: 'flex', flexDirection: 'column' }}>
         <CanvasBar />
 
-        {/* <Canvas height={height} windowSize={windowSize}/> */}
+        <Canvas height={height} windowSize={windowSize}/>
         </div>
         <div
                 style={{
                     height: '0px',
                     background: 'blue',
-                    cursor: 'row-resize',
+                    cursor: 'ns-resize',
                     position: 'relative',
                     justifyContent: 'center',
                     // bottom: `${900-height}px`,
@@ -166,7 +164,7 @@ const Processes = () => {
                 onMouseDown={() => setIsResizing(true)}
                 // className={isResizing ?`p-1 border-t border-state-700 bg-blue-500` : `p-1 border-t border-state-700 bg-neutral-800`}
             >
-              <div className="border-2"></div>
+              <div className={isResizing ? `border-2 border-blue-500` : `border-2 border-state-700`}></div>
             </div>
             <div style={{ height: `calc(${100-height}% + 0px)`, width: '100%' }} className="bg-neutral-800 overflow-auto">
         <div className={`p-3 border-t border-state-700 `}>

@@ -5,12 +5,7 @@ function Canvas(props) {
   
   return (
     <>
-      <div
-        // style={{ height: `calc(70vh - 84px + ${calibateH}px)`, width: '100%' }}
-        // style={{ height: `calc(${props.height-35}px)`, width: '100%' }}
-      >
-        <Renderkub height={props.height}/>
-      </div>
+        <Renderkub height={props.height} windowSize={props.windowSize}/>
     </>
   );
 }
